@@ -1,0 +1,82 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.background {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.bgimage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+.middlebox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 780px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* space between box and image */
+    padding: 20px;
+    z-index: 2;
+}
+.logo-container {
+    position: absolute;
+    top: -50px;
+    left: 32%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+.logo-image {
+    width: 225px;
+    height: auto;
+}
+.MC {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(26px); /* Starts offscreen to the right */
+    transition: transform 1s ease, opacity 1s ease;
+    right: 0;
+}
+
+.MC.enter {
+    opacity: 1;
+    transform: translateX(0); /* Slides in */
+}
+.MC.active {
+    transform: translateX(0); /* Slide to center */
+    opacity: 1; /* Fade in */
+}
+
+.MC.exit {
+    opacity: 0;
+    transform: translateX(26px); /* Slides back out */
+}
+.mc-container {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 420px); /* Adjust based on .middlebox width + gap */
+    transform: translateY(-50%);
+    height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
