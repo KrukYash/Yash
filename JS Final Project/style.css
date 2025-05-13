@@ -1,0 +1,486 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.background {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.bgimage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+.middlebox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 780px;
+    height: 530px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* space between box and image */
+    padding: 20px;
+    z-index: 2;
+}
+.logo-container {
+    position: absolute;
+    top: -30px;
+    left: 32%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+.logo-image {
+    width: 225px;
+    height: auto;
+}
+.MC {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(26px); /* Starts offscreen to the right */
+    transition: transform 1s ease, opacity 1s ease;
+    right: 0;
+}
+
+.MC.enter {
+    opacity: 1;
+    transform: translateX(0); /* Slides in */
+}
+.MC.active {
+    transform: translateX(0); /* Slide to center */
+    opacity: 1; /* Fade in */
+}
+
+.MC.exit {
+    opacity: 0;
+    transform: translateX(26px); /* Slides back out */
+}
+.mc-container {
+    position: absolute;
+    top: 52.75%;
+    left: calc(50% + 420px); /* Adjust based on .middlebox width + gap */
+    transform: translateY(-50%);
+    height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.button-group {
+    position: absolute;
+    top: 54%;
+    left: 13%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+}
+
+.btn {
+    width: 300px;
+    height: 85px;
+    padding: 14px 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffffcc;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(255, 100, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 0; /* Square edges */
+    outline: none;
+    font-family: 'roboto', sans-serif;
+}
+
+.btn:hover {
+    background: rgba(49, 20, 1, 0.4);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+
+.login-btn {
+    border-right: 3px solid rgba(0, 0, 0, 0.212);
+    border-top: 3px solid rgba(0, 0, 0, 0.212);
+    border-left: 3px solid rgba(0, 0, 0, 0.212);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.212);
+}
+.login-btn:hover {
+    border-right: 3px solid rgba(0, 0, 0, 0.212);
+    border-top: 3px solid rgba(0, 0, 0, 0.212);
+    border-left: 3px solid rgba(0, 0, 0, 0.212);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.212);
+}
+
+.signup-btn {
+    border-right: 3px solid rgba(0, 0, 0, 0.212);
+    border-top: 3px solid rgba(0, 0, 0, 0.212);
+    border-left: 3px solid rgba(0, 0, 0, 0.212);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.212);
+}
+.signup-btn:hover {
+    border-right: 3px solid rgba(0, 0, 0, 0.212);
+    border-top: 3px solid rgba(0, 0, 0, 0.212);
+    border-left: 3px solid rgba(0, 0, 0, 0.212);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.212);
+}
+.white-background {
+    position: absolute;
+    top: 50%;
+    left: 31.55%;
+    transform: translate(-50%, -50%);
+    width: 450px; /* Width of the background */
+    height: 533px; /* Height of the background */
+    background-color: rgba(190, 183, 183, 0.13);
+    z-index: 1; /* Ensure it's behind buttons but in front of the middlebox */
+    border-radius: 10px; /* Rounded corners */
+    border: solid;
+}
+.button-group {
+    position: absolute;
+    top: 54%;
+    left: 13%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2; /* Ensures buttons are on top of the white background */
+}
+.intro-text {
+    font-size: 31px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 105px; /* Move down */
+    margin-left: 16.1%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+  }
+  
+  .small-text {
+    font-size: 20px;
+    color: #000000cc;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: -33px; /* Move down */
+    margin-left: 24%;
+    font-weight: bolder;
+  }
+
+    .pre-registration 
+    {
+        font-size: 32px;
+        color: #000000cc;
+        text-align: left;
+        font-family: 'Orbitron', sans-serif;
+        letter-spacing: 1px;
+        line-height: 1.5;
+        margin-top: 245px; /* Move down */
+        margin-left: 11%; /* Move right */
+        animation: glow 1.5s ease-in-out infinite;
+        font-weight: 700;
+  }
+  .login-text {
+    font-size: 45px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 110px;/* Move down */
+    margin-left: 34%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+  }
+.input-field {
+    margin-left: -12%;
+    width: 400px;
+    height: 17px;
+    padding: 14px 0;
+    background: rgba(49, 20, 1, 0.4);
+    color: #000000cc;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: text;
+    border-radius: 0; /* Square edges */
+    outline: none;
+    font-family: 'roboto', sans-serif;
+    border-radius: 8px;
+    padding-right: 0 10px;
+    text-indent: 10px;   
+}
+.input-field:hover {
+    background: rgb(228, 213, 213);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+.input-field::placeholder {
+    color: rgba(0, 0, 0, 0.462);
+}
+ .Login-text {
+    font-size: 28px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: -260px; /* Move down */
+    margin-left: 4.3%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+  }
+  .Sign-Up-text {
+    width: 500px;
+    font-size: 22px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 370px; /* Move down */
+    margin-left: -715px; /* Move right */
+    margin-right: 25%;
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+    position: relative;
+    z-index: 10;
+  }
+.Sign-Up {
+    width: 500px;
+    font-size: 21px;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 345px; /* Move down */
+    margin-left: -665px; /* Move right */
+    margin-right: -8.5%;
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+    position: relative;
+    z-index: 10;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    color: blue;
+
+}
+.Sign-Up:active {
+    color: purple;
+}
+.Sign-Up:hover {
+text-decoration: underline;
+cursor: pointer;
+}
+.SignUp-text {
+    font-size: 28px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 95px; /* Move down */
+    margin-left: 12%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;
+}
+.Input-field {
+    margin-left: -12%;
+    width: 400px;
+    height: 8px;
+    padding: 14px 0;
+    background: rgba(49, 20, 1, 0.4);
+    color: #000000cc;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(128, 122, 122, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: text;
+    border-radius: 0; /* Square edges */
+    outline: none;
+    font-family: 'roboto', sans-serif;
+    border-radius: 8px;
+    padding-right: 0 10px;
+    text-indent: 10px;  
+    margin-left: 15px; 
+    margin-top: 1px;
+}
+.Input-field:hover {
+    background: rgb(228, 213, 213);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+.Input-field::placeholder {
+    color: rgba(0, 0, 0, 0.462);
+}
+.label {
+    font-size: 20px;
+    color: #000000cc;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5; /* Move down */
+    margin-left: 4%;
+    font-weight: bolder;
+}
+.signup-bt {
+    width: 170px;
+    height: 55px;
+    padding: 14px 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffffcc;
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(255, 100, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 0; /* Square edges */
+    outline: none;
+    margin-left: 28.5%;
+    margin-top: 20px;
+    font-family: 'roboto', sans-serif;
+}
+.signup-bt:hover {
+    background: rgba(49, 20, 1, 0.4);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+.thanks {
+    font-size: 31px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 115px; /* Move down */
+    margin-left: 5.5%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+}
+.Home-bt {
+    width: 250px;
+    height: 75px;
+    padding: 14px 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffffcc;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(255, 100, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 0px; /* Square edges */
+    outline: none;
+    margin-left: 21.7%;
+    margin-top: 180px;
+    font-family: 'roboto', sans-serif;
+}
+.Home-bt-sign {
+    width: 250px;
+    height: 75px;
+    padding: 14px 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffffcc;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(255, 100, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 0px; /* Square edges */
+    outline: none;
+    margin-left: 21.7%;
+    margin-top: 180px;
+    font-family: 'roboto', sans-serif;
+}
+.Home-bt-sign:hover {
+    background: rgba(49, 20, 1, 0.4);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+.Home-bt:hover {
+    background: rgba(49, 20, 1, 0.4);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+.thanks-sign {
+    font-size: 31px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 115px; /* Move down */
+    margin-left: 7.5%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;/* Add glowing animation */
+}
+.small-thanks-text {
+    font-size: 23px;
+    color: #000000;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 10px; /* Move down */
+    margin-left: 3%;
+    font-weight: bolder;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GachaVerse - Login Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background">
+    <img src="Background.png" class="bgimage" />
+
+    <div class="main">
+      <div class="middlebox">
+        <div class="logo-container">
+          <img src="Logo.png" class="logo-image" id="CompanyLogo" />
+        </div>
+
+        <div class="Login-text">Enter Credential to Login</div>
+
+        <!-- ✅ Form starts here -->
+        <form class="form-container" 
+              style="position:absolute; top:54%; left:13%; transform:translateY(-50%); z-index:2; display:flex; flex-direction:column; gap:20px;" onsubmit="return validateLogin(event)">
+          <input type="text" placeholder=" Username" class="input-field" id="username" required />
+          <input type="password" placeholder=" Password" class="input-field" id="password" required />
+          <button type="submit" class="btn">Login</button>
+        </form>
+
+        <div class="white-background">
+          <div class="intro-wrapper"></div>
+        </div>
+
+        <!-- Sign-Up Link -->
+        <p class="Sign-Up-text">Don't have an account?</p>
+        <a class="Sign-Up" onclick="window.location.href='SignUp.html'" target="_blank">Sign-Up</a>
+
+        <!-- Characters -->
+        <div class="mc-container">
+          <img src="MaleMC.png" class="MC" id="MaleMC" />
+          <img src="FemaleMC.png" class="MC" id="FemaleMC" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ External JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
