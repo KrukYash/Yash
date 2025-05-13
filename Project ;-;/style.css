@@ -305,3 +305,61 @@ body, html {
 text-decoration: underline;
 cursor: pointer;
 }
+.SignUp-text {
+    font-size: 28px;
+    color: #080000;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 100px; /* Move down */
+    margin-left: 12%; /* Move right */
+    animation: glow 1.5s ease-in-out infinite; 
+    font-weight: 700;
+}
+.Input-field {
+    margin-left: -12%;
+    width: 400px;
+    height: 10px;
+    padding: 14px 0;
+    background: rgba(49, 20, 1, 0.4);
+    color: #ffffffcc;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 1px;
+    border: 1.5px solid rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: text;
+    border-radius: 0; /* Square edges */
+    outline: none;
+    font-family: 'roboto', sans-serif;
+    border-radius: 8px;
+    padding-right: 0 10px;
+    text-indent: 10px;  
+    margin-left: 15px; 
+    margin-top: 1px
+}
+.Input-field:hover {
+    background: rgb(228, 213, 213);
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
+    transform: translateX(3px);
+    transition: border-right 0.15s;
+}
+.Input-field::placeholder {
+    color: rgb(29, 29, 29);
+}
+.label {
+    font-size: 20px;
+    color: #000000cc;
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: -22px; /* Move down */
+    margin-left: 4%;
+    font-weight: bolder;
+}

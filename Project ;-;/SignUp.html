@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GachaVerse - Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background">
+    <img src="Background.png" class="bgimage">
+
+    <div class="main">
+      <div class="middlebox">
+        <div class="logo-container">
+          <img src="Logo.png" class="logo-image" id="CompanyLogo">
+        </div>
+
+        <div class="white-background">
+          <div class="intro-wrapper">
+            <p class="SignUp-text">Create Your Account</p>
+          </div>
+
+          <!-- Signup Form Starts Here -->
+          <form class="signup-form" action="#" method="POST" onsubmit="return validateSignUpForm();">
+            <label class="label" for="username">Username</label>
+            <input type="text" class="Input-field" name="username" required /><br>
+
+            <label class="label" for="email">Email</label>
+            <input type="email" class="Input-field" name="email" required /><br>
+
+            <label class="label" for="password">Password</label>
+            <input type="password" class="Input-field" name="password" required /> <br>
+
+            <label class="label" for="confirmPassword">Confirm Password</label>
+            <input type="password" class="Input-field" name="confirmPassword" required />
+
+            <button type="submit" class="btn signup-bt" id="signup-bt">Sign Up</button>
+          </form>
+        </div>
+
+        <div class="mc-container">
+          <img src="MaleMC.png" class="MC" id="MaleMC">
+          <img src="FemaleMC.png" class="MC" id="FemaleMC">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
