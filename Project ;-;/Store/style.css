@@ -222,13 +222,13 @@ body, html {
     width: 400px;
     height: 17px;
     padding: 14px 0;
-    background: rgba(49, 20, 1, 0.4);
-    color: #ffffffcc;
+    background: rgb(228, 213, 213);
+    color: #000000cc;
     font-weight: 600;
     font-size: 24px;
     letter-spacing: 1px;
     border: 1.5px solid rgb(0, 0, 0);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(255, 100, 0, 0.1);
     backdrop-filter: blur(12px);
     transition: all 0.3s ease;
     cursor: text;
@@ -237,18 +237,10 @@ body, html {
     font-family: 'roboto', sans-serif;
     border-radius: 8px;
     padding-right: 0 10px;
-    text-indent: 10px;   
-}
-.input-field:hover {
-    background: rgb(228, 213, 213);
-    color: #000000;
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 12px rgba(255, 120, 0, 0.2);
-    transform: translateX(3px);
-    transition: border-right 0.15s;
+    text-indent: 10px;
 }
 .input-field::placeholder {
-    color: rgb(29, 29, 29);
+    color: rgb(56, 55, 55);
 }
  .Login-text {
     font-size: 28px;

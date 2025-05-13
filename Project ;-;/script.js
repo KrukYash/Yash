@@ -24,9 +24,11 @@ function switchCharacters() {
             switchCharacters();
 
         }, 500); // match the exit animation time (1s)
-    }, 3000); // visible for 3 seconds
+    }, 5000); // visible for 3 seconds
 }
+
 
 window.onload = () => {
     switchCharacters();
 };
+

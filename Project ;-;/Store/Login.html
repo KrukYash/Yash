@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GachaVerse - Login Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  </style>
+</head>
+<body>
+  <div class="background">
+    <img src="Background.png" class="bgimage" />
+
+    <div class="main">
+      <div class="middlebox">
+        <div class="logo-container">
+          <img src="Logo.png" class="logo-image" id="CompanyLogo" />
+        </div>
+
+        <div class="Login-text">Enter Credential to Login</div>
+
+        <!-- Input fields styled like buttons -->
+        <div class="form-container" style="position:absolute; top:54%; left:13%; transform:translateY(-50%); z-index:2; display:flex; flex-direction:column; gap:20px;">
+          <input type="text" placeholder=" Username" class="input-field" />
+          <input type="password" placeholder=" Password" class="input-field" />
+          <button class="btn" onclick="window.location.href='Thanks.html'">Login</button>
+        </div>
+
+        <div class="white-background">
+          <div class="intro-wrapper"></div>
+        </div>
+
+        <!-- Sign-Up Link -->
+        <p class="Sign-Up-text">Don't have an account?</p>
+        <a class="Sign-Up" onclick="window.location.href='SignUp.html'" target="_blank">Sign-Up</a>
+
+        <!-- Characters -->
+        <div class="mc-container">
+          <img src="MaleMC.png" class="MC" id="MaleMC" />
+          <img src="FemaleMC.png" class="MC" id="FemaleMC" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const maleMC = document.getElementById('MaleMC');
+    const femaleMC = document.getElementById('FemaleMC');
+    let current = maleMC;
+    let next = femaleMC;
+
+    function switchCharacters() {
+      current.classList.add('enter');
+      setTimeout(() => {
+        current.classList.remove('enter');
+        current.classList.add('exit');
+        setTimeout(() => {
+          current.classList.remove('exit');
+          [current, next] = [next, current];
+          switchCharacters();
+        }, 500);
+      }, 5000);
+    }
+
+    window.onload = () => {
+      switchCharacters();
+    };
+  </script>
+</body>
+</html>
