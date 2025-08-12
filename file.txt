@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+#define SIZE 50
+int top = -1;
+int stack[SIZE];
+void push(int value) {
+    if(top == SIZE-1) {
+        printf("Stack is Overflow.Can't Push %d\n" , value);
+    } else {
+        ++top;
+        stack[top] = value;
+        printf("Value to be Pushed %c\n",value);
+    }
+}
+int pop() {
+    int popped_value = stack[top];
+    if(top == -1) {
+        printf("Stack is Underflow.\n");
+        return -1;
+    }
+    else {
+        printf("Value to be Popped %c\n",popped_value);
+        --top;
+        return popped_value;
+    }
+}
+int main() {
+    char order[SIZE];
+    char reversed[SIZE];
+    int i;
+    printf("Enter a String : ");
+    gets(order);
+    for(i = 0;order[i] != '\0';i++) {
+        push(order[i]);
+    }
+    for(i = 0;top!=-1;i++) {
+        reversed[i] = pop();
+    }
+    printf("Answer : %s",reversed);
+     return 0;
+}
