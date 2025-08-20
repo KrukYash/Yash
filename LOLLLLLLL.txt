@@ -1,0 +1,41 @@
+--CREATE TABLE TRANSACTION_24012011161 (
+-- Acc_no VARCHAR(5),
+-- Tr_date DATE,
+-- Amt DECIMAL(10,5),
+-- Type_of_tr VARCHAR(5),
+ --Mode_of_pay VARCHAR(7)
+-- );
+-- INSERT INTO TRANSACTION_24012011161(Acc_no,Tr_date,Amt,Type_of_tr,Mode_of_pay) VALUES
+--('A001','2021-05-03',10000,'D','Cash');
+--INSERT INTO TRANSACTION_24012011161(Acc_no,Tr_date,Amt,Type_of_tr,Mode_of_pay) VALUES
+--('A002','2021-07-05',5000,'W','Cheque');
+--INSERT INTO TRANSACTION_24012011161(Acc_no,Tr_date,Amt,Type_of_tr,Mode_of_pay) VALUES
+--('A003','2021-08-12',25000,'D','Cheque');
+--INSERT INTO TRANSACTION_24012011161(Acc_no,Tr_date,Amt,Type_of_tr,Mode_of_pay) VALUES ('A004','2021-05-15',30000,'D','Cheque');
+--INSERT INTO TRANSACTION_24012011161(Acc_no,Tr_date,Amt,Type_of_tr,Mode_of_pay) VALUES ('A005','2021-10-22',15000,'W','Cash');
+
+--SELECT Type_of_tr, MIN(Amt) AS Amount
+--FROM TRANSACTION_24012011161
+--GROUP BY Type_of_tr
+
+--SELECT Type_of_tr, Max(Amt) AS Amount
+--FROM TRANSACTION_24012011161
+--GROUP BY Type_of_tr
+
+SELECT Acc_no, COUNT(*) AS Amount
+FROM TRANSACTION_24012011161
+GROUP BY Acc_no
+
+--SELECT Mode_of_pay, COUNT(Amt) AS Amount
+--FROM TRANSACTION_24012011161
+--GROUP BY Mode_of_pay WHERE
+
+
+
+
+
+
+
+
+
+
