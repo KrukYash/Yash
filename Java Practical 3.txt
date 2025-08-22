@@ -1,0 +1,88 @@
+Practical 3.1
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int array[] = new int[5];
+		int sum = 0;
+		System.out.println("Enter Element in the 1D-Array.");
+		for(int i = 0;i<5;i++) {
+		    array[i] = sc.nextInt();
+		    sum += array[i];
+		}
+		System.out.println("Sum = " + sum);
+		System.out.println("Avg = " + sum/5);
+	}
+}
+Practical 3.2
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int Matrix[][] = new int[2][2];
+		int Transpose[][] = new int[2][2];
+		int sum = 0;
+		System.out.println("Enter Element in the 2D-Matrix.");
+		for(int i = 0;i<2;i++) {
+		    for(int j = 0;j<2;j++) {
+		        Matrix[i][j] = sc.nextInt();
+		    }
+		}
+		for(int i = 0;i<2;i++) {
+		    for(int j = 0;j<2;j++) {
+		        Transpose[j][i] = Matrix[i][j];
+		    }
+		}
+		System.out.println("Transpose Matrix");
+		for(int i = 0;i<2;i++) {
+		    for(int j = 0;j<2;j++) {
+		        System.out.print(Transpose[i][j]);
+		    }
+		    System.out.println();
+		}
+	}
+}
+Practical 3.3
+import java.util.Scanner;
+import java.util.Arrays;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int array[] = new int[5];
+		System.out.println("Enter Element in the 1D-Array.");
+		for(int i = 0;i<5;i++) {
+		    array[i] = sc.nextInt();
+		}
+		Arrays.sort(array);
+		int SL = array[3];
+		System.out.println("Second Largest Element is = "+ SL);
+	}
+}
+Practica 3.4
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int Array1[] = new int[3];
+		int Array2[] = new int[3];
+		int merged[] = new int[6];
+		System.out.println("Enter Element in the Array1.");
+		for(int i = 0;i<3;i++) {
+		        Array1[i] = sc.nextInt();
+		}
+		System.out.println("Enter Element in the Array2.");
+		for(int i = 0;i<3;i++) {
+		        Array2[i] = sc.nextInt();
+		}
+		System.arraycopy(Array1,0,merged,0,3);
+		System.arraycopy(Array2,0,merged,3,3);
+		System.out.println("Merged Array.");
+		for(int i = 0;i<6;i++) {
+		        System.out.print(merged[i]);
+		}
+	}
+}
