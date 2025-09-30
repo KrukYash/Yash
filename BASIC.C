@@ -1,94 +1,55 @@
 #include <stdio.h>
-#include <conio.h>
-#define MAX 5
-int queue[MAX], front=-1, rear=-1;
-void insert_from_front(int value) {
-	if((front==0 && rear==MAX-1) || (front==(rear+1)%MAX)) {
-		printf("Queue is Full.\n");
-		getch();
-		exit(0);
-	}
-	else {
-		if(front==-1) {
-			front = rear = 0;
-		}
-		else {
-			if(front==0) {
-			       front = MAX-1;
-			}
-			else {
-				front = front-1;
-			}
-		}
-	scanf("%d" , &value);
-	queue[front] = value;
-	}
-void insert_from_rear(int value) {
-	if((front==0 && rear==MAX-1) || (front==(rear+1)%MAX)) {
-		printf("Queue is Full.\n");
-		getch();
-		exit(0);
-	}
-	else {
-		if(front==-1) {
-			front = rear = 0;
-		}
-		else {
-			if(rear==MAX-1) {
-			       rear=0;
-			}
-			else {
-				rear=rear+1;
-			}
-		}
-	scanf("%d" , &value);
-	queue[rear] = value;
-	}
-
- }
-void delete_from_rear() {
-	if(front==-1) {
-		printf("Queue is Underflow.\n");
-		getch();
-		exit(0);
-	}
-	else {
-		if(rear == 0) {
-			printf("Deleted Element = %d" , queue[rear]);
-			rear = MAX-1;
-		}
-		else {
-			printf("Deleted Element = %d" , queue[rear]);
-			rear = rear-1;
-		}
-	}
+#include <stdlib.h>
+//Creation Of Node
+struct Node {
+	int data; //data
+	struct Node *next; //link
+};
+void insertStart(struct Node **head,int data)
+{
+	struct Node *newNode = (struct Node *) malloc (sizeof(struct Node));
+	newNode->data = data;
+	newNode->next = *head;
+	*head = newNode;
 }
-void display();
-int main() {
-	int ch;
-	int x;
+void display(struct Node *node)
+{
+	while(node != NULL)
+	{
+		printf("%d " , node->data);
+		node = node->next;
+	}
+	printf("\n");
+}
+int main()
+{
+	struct Node *head = NULL;
+	struct Node *node2 = NULL;
+	struct Node *node3 = NULL;
+	struct Node *node4 = NULL;
 	clrscr();
-	do {
-		printf("1. Insert from Front\n2. Insert From Rear\n3. Delete from Front\n4. Delete from Rear\5. Display\n");
-		scanf("%d" , &ch);
-		switch(ch) {
-			case 1: insert_from_front();
-				break;
-			case 2: insert_from_rear();
-				break;
-			case 3: delete_from_front();
-				break;
-			case 4: delete_from_rear();
-				break;
-			case 5: display();
-				break;
-			default: printf("Enter a valid Input.\n");
-				break;
-		}
-		printf("Do you want to continue..? Then press 1");
-		scanf("%d" , &x);
-
-	}while(x==1);
+	head = (struct Node *) malloc (sizeof(struct Node));
+	node2 = (struct Node *) malloc (sizeof(struct Node));
+	node3 = (struct Node *) malloc (sizeof(struct Node));
+	node4 = (struct Node *) malloc (sizeof(struct Node));
+	head->data = 15;
+	head->next = node2;
+	node2->data = 10;
+	node2->next = node3;
+	node3->data = 12;
+	node3->next = node4;
+	node4->data = 3;
+	node4->next = NULL;
+	printf("LinkList: ");
+	display(head);
+	insertStart(&head,25);
+	printf("After Insertation of Element\n");
+	printf("LinkList: ");
+	display(head);
 	getch();
 	return 0;
 }
+
+
+
+
