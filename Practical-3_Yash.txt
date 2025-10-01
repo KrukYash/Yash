@@ -1,0 +1,36 @@
+-- CREATE DATABASE Practical3;
+-- USE Practical3;
+
+-- CREATE TABLE ACCOUNT_Key_24012011161 (
+-- Acc_no VARCHAR(5) CHECK(Acc_no LIKE 'A%') PRIMARY KEY,
+-- Name VARCHAR(30) NOT NULL,
+-- City VARCHAR(20) NOT NULL,
+-- Balance DECIMAL(10,2) CHECK(Balance >= 500),
+-- Loan_taken VARCHAR(3) CHECK(Loan_taken IN ('YES','NO'))
+-- );
+
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A001","Patel Jigar","Mehsana",50000,"YES");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A002","Patel Ramesh","Mehsana",50000,"YES");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A003","DAVE Hardik","Ahmedabad",75000,"NO");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A004","Soni Hetal","Ahmedabad",100000,"NO");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A005","Sony Atul","Vadodara",100000,"YES");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A005","Patel Arun","Surat",4000,"No");
+
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A006","NULL","Mehsana",5000,"NO");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A007","Patel Rachit","NULL",6000,"NO");
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A008","Patel Vir","Mehsana",400,"NO");
+
+-- INSERT INTO ACCOUNT_Key_24012011161 (Acc_no,Name,City,Balance,Loan_taken) VALUES ("A009","Patel Vyom","Surat",1000,"ABC");
+
+CREATE TABLE LOAN_Key_24012011161(
+Loan_no VARCHAR(5) CHECK(Loan_no LIKE 'L%') PRIMARY KEY,
+Acc_no VARCHAR(5),
+Loan_amt DECIMAL(10,2) NOT NULL,
+Interest_rate DECIMAL(5,2) NOT NULL,
+Loan_date DATE,
+Remaining_loan DECIMAL(10,2),
+FOREIGN KEY (Acc_no) REFERENCES ACCOUNT_Key_24012011161(Acc_no)
+);
+INSERT INTO LOAN_Key_24012011161 (Loan_no,Acc_no,Loan_amt,Interest_rate,Loan_date,Remaining_loan) VALUES ("L001","A001",100000,7,'2004-01-01',75000);
+INSERT INTO LOAN_Key_24012011161 (Loan_no,Acc_no,Loan_amt,Interest_rate,Loan_date,Remaining_loan) VALUES ("L002","A002",300000,9,'2004-05-18',150000);
+INSERT INTO LOAN_Key_24012011161 (Loan_no,Acc_no,Loan_amt,Interest_rate,Loan_date,Remaining_loan) VALUES ("L003","A005",500000,11,'2004-06-15',300000);
