@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
-
+import java.applet.Applet;
+import java.awt.Graphics;
 public class SmilingFace extends Frame {
 
     public SmilingFace() {
@@ -32,3 +33,4 @@ public class SmilingFace extends Frame {
         new SmilingFace(); 
     }
 }
+/* <applet code="First.class" width="300" height="300"></applet> */
