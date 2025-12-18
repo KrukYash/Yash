@@ -1,0 +1,52 @@
+#include <stdio.h>
+void sum(int n) {
+    int count = 0;
+    int sum = 0;
+    for(int i = 1;i<=n;i++) {
+        sum += i;
+        count++;
+    }
+    printf("Sum is %d using %d steps" , sum,count);
+}
+void sumUsingEquation(int n) {
+    int count = 0;
+    int sum = n*(n+1)/2;
+    count++;
+    printf("Sum is %d using %d steps" , sum,count);
+}
+int sumUsingRecursion(int n) {
+    int count = 0;
+    count++;
+    if(n == 0) {
+        return 0;
+    }
+    else {
+         return n+sumUsingRecursion(n-1);
+    }
+    
+}
+int main() {
+    while(1) {
+    int n;
+    printf("\nEnter N to find the SUM from 1 to N.\n");
+    scanf("%d" , &n);
+    int Op;
+    printf("Press 1 to find sum using For Loop.\nPress 2 to find sum using Equation.\nPress 3 to find the sum using Recursion.\n");
+    printf("\nEnter a Number : ");
+    scanf("%d" ,&Op);
+        switch(Op) {
+            case 1:
+                sum(n);
+                break;
+            case 2:
+                sumUsingEquation(n);
+                break;
+            case 3:
+                printf("Sum is %d using %d steps" , sumUsingRecursion(n));
+                break;   
+            default:
+                printf("Please enter a valid Input.");
+                break;
+        }
+    }
+}
