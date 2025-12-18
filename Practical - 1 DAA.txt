@@ -50,3 +50,48 @@ int main() {
         }
     }
 }
+
+
+Recursion
+#include <stdio.h>
+void Fect(int n) {
+    int count = 0;
+    int sum = 1;
+    for(int i = n;i>=1;i--) {
+        sum *= i;
+        count++;
+    }
+    printf("Fect is %d using %d steps" , sum,count);
+}
+int FectUsingRecursion(int n) {
+    int count = 0;
+    count++;
+    if(n == 0) {
+        return 1;
+    }
+    else {
+         return n*FectUsingRecursion(n-1);
+    }
+}
+int main() {
+    while(1) {
+    int n;
+    printf("\nEnter N to find the SUM from 1 to N.\n");
+    scanf("%d" , &n);
+    int Op;
+    printf("Press 1 to find sum using For Loop.\nPress 2 to find the sum using Recursion.\n");
+    printf("\nEnter a Number : ");
+    scanf("%d" ,&Op);
+        switch(Op) {
+            case 1:
+                Fect(n);
+                break;
+            case 2:
+                printf("Fect is %d\n" , FectUsingRecursion(n));
+                break;   
+            default:
+                printf("Please enter a valid Input.");
+                break;
+        }
+    }
+}
