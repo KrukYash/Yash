@@ -1,0 +1,84 @@
+#1
+# num = int(input("Enter a Number: "))
+# temp = num
+# sum = 0
+# while num>0:
+#     n = num % 10
+#     sum = sum + (n**len(str(temp)))
+#     num = (int) (num/10)
+# if(sum == temp):
+#     print("{} is an Armstrong Number.".format(temp))
+# else:
+#     print("{} is not an Armstrong Number.".format(temp))
+#2
+# num = int(input("Enter a Number: "))
+# temp = num
+# sum = 0
+# for i in range(1,num):
+#     if(num % i == 0):
+#         print("Divisor",i)
+#         sum = sum + i
+# if(sum == temp):
+#     print("{} is Spacial Number.".format(temp))
+# else:
+#     print("{} is not a Spacial Number.".format(temp))
+#3
+# st = 'Print only the words that start with s in this sentence'
+# words = st.split()
+# for i in words:
+#     if i.startswith('s') or i.startswith('S') or i.endswith('S') or i.endswith('s'):
+#         print(i)
+#4
+# num = int(input("Enter a Number: "))
+# for i in range(1,11):
+#     print(num,"x",i," = {}".format(i*num))
+#5
+# num = int(input("Enter a Number: "))
+# temp = num
+# sum = 0
+# while num>0:
+#     n = num % 10
+#     sum = sum + n    
+#     num = (int) (num/10)
+# print("Sum of number is {}.".format(sum))
+#6
+# st = 'I love doing python programming in spyder'
+# words = st.split()
+# for word in words:
+#     if len(word) % 2 == 0:
+#         print("{} is even!".format(word))
+#7
+# s = input("Enter a string: ")
+# digits = 0
+# upper = 0
+# lower = 0
+# for ch in s:
+#     if ch.isdigit():
+#         digits += 1
+#     elif ch.isupper():
+#         upper += 1
+#     elif ch.islower():
+#         lower += 1
+# print("Number of digits:", digits)
+# print("Number of uppercase letters:", upper)
+# print("Number of lowercase letters:", lower)
+#8
+# s = input("Enter a string: ")
+# rev = s[::-1]
+# if(s == rev):
+#     print("The string is a palindrome")
+# else:
+#     print("The string is not a palindrome")
+#9
+# s = input("Enter a string: ")
+# i = int(input("Enter the index to remove: "))
+# result = s[:i] + s[i+1:]
+# print("String after removing character:", result)
+#10
+# s = input("Enter the main string: ")
+# sub = input("Enter the substring: ")
+# if sub in s:
+#     print("Substring is present in the given string")
+# else:
+#     print("Substring is not present in the given string")
+
