@@ -1,0 +1,52 @@
+mongod --configsvr --dbpath "C:\pr6\config\c0" --port 27018 --replSet=c0
+
+mongod --configsvr --dbpath "C:\pr6\config\c1" --port 27019 --replSet=c0
+
+mongod --configsvr --dbpath "C:\pr6\config\c2" --port 27020 --replSet=c0
+
+mongo --port 27019
+config = { _id: "c0", members:[{ _id : 0, host : "localhost:27018"},
+{ _id : 1, host : "localhost:27019" },
+{ _id : 2, host : "localhost:27020" }]};
+rs.initiate(config)
+
+mongod --replSet s1 --dbpath "C:\pr6\shard1\s0" --port 37019 --shardsvr
+
+mongod --replSet s1 --dbpath "C:\pr6\shard1\s1" --port 37020 --shardsvr
+
+mongod --replSet s1 --dbpath "C:\pr6\shard1\s2" --port 37021 --shardsvr
+
+mongo --port 37019
+config = { _id: "s1", members:[
+{ _id : 0, host : "localhost:37019" },
+{ _id : 1, host : "localhost:37020" },
+{ _id : 2, host : "localhost:37021" }]};
+rs.initiate(config)
+
+mongod --replSet s0 --dbpath "C:\pr6\shard2\s0" --port 50001 --shardsvr
+
+mongod --replSet s0 --dbpath "C:\pr6\shard2\s1" --port 50002 --shardsvr
+
+mongod --replSet s0 --dbpath "C:\pr6\shard2\s2" --port 50003 --shardsvr
+
+mongo --port 50001
+config = { _id: "s0", members:[
+{ _id : 0, host : "localhost:50001" },
+{ _id : 1, host : "localhost:50002" },
+{ _id : 2, host : "localhost:50003" }]};
+rs.initiate(config)
+
+mongos.exe --configdb c0/localhost:27018,localhost:27019,localhost:27020 --port 1000
+db.bios.insertMany([{name:"Prachi",lname:"Shah",city:"Mehsana",state:"Gujarat"},{name:"Falgun",lname:"Shah",city:"Ahmedabad",state:"Gujarat"},{name:"agam",lname:"shah",city:"Mehsana",state:"Gujarat"},{name:"Shraddha",lname:"Mehta",city:"Baroda",state:"Gujarat"},{name:"Shurya",lname:"Pandya",city:"Mehsana",state:"Gujarat"},{name:"Khushi",lname:"Patel",city:"Mehsana",state:"Gujarat"},{name:"Pooja",lname:"Mevada",city:"Ahmedabad",state:"Gujarat"},{name:"Meeta",lname:"Shah",city:"Ahmedabad",state:"Gujarat"},{name:"Avinash",lname:"Mehta",city:"Ahmedabad",state:"Gujarat"},{name:"Vency",lname:"Parekh",city:"Ahmedabad",state:"Gujarat"},{name:"Dhruv",lname:"Shah",city:"Ahmedabad",state:"Gujarat"}])
+
+in 50001
+show dbs
+show collections 
+use projectionDB; 
+db.bios.count();
+
+in 37019
+show dbs
+show collections 
+use projectionDB; 
+db.bios.count();
