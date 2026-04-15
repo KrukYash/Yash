@@ -1,0 +1,474 @@
+Practical - 1
+Implement a function for each of the following problems and count the number of steps executed/Time taken by each function on various inputs and write complexity of each function. Also draw a comparative chart. In each of the following functions N will be passed by user.
+1. To calculate the sum of numbers from 1 to N using a loop.
+2. To calculate the sum of numbers from 1 to N using the equation.
+3.To calculate sum of numbers from 1 to N using recursion.
+Code:-
+#include <stdio.h>
+void IterationMethod(int N);
+void EquationMethod(int N);
+void RecursiveMethod(int N);
+int main() {
+    int N,op;
+    printf("\nEnter Number: ");
+    scanf("%d" , &N);
+    do {
+        printf("\nSelect Method.\n");
+        printf("1: Iteration Method\n2: Equation Method\n3: Recursive Method\n4: Exit");
+        printf("\nEnter a Method: ");
+        scanf("%d" , &op);
+        switch(op) {
+            case 1:
+                IterationMethod(N);
+                break;
+            case 2:
+                EquationMethod(N);
+                break;
+            case 3:
+                RecursiveMethod(N);
+                break;
+            case 4:
+                printf("\nProgram Exited Successfully.");
+                return 0;
+            default:
+                printf("\nInvalid Input.\n");
+                break;
+        }
+        
+    } while(1);
+}
+void IterationMethod(int N) {
+    int sum = 0;
+    int count = 0;
+    int i;
+    for(i = 1;i<=N;i++) {
+        sum = sum + i;
+        count++;
+    }
+    printf("Total Sum = %d\n" , sum);
+    printf("Total Steps: %d\n" , count);
+}
+void EquationMethod(int N) {
+    int sum;
+    int count = 0;
+    sum = (N * (N+1))/2;
+    count++;
+    printf("Total Sum = %d\n" , sum);
+    printf("Total Steps: %d\n" , count);
+}
+void RecursiveMethod(int N) {
+    static int sum = 0;
+    static int count = 0;
+    count++;
+    if(N==0) {
+        printf("Total Sum = %d\n" , sum);
+        printf("Total Steps: %d\n" , count);
+        return;
+    }
+    sum = sum + N;
+    RecursiveMethod(N-1);
+}
+
+
+
+Practical-2 
+Implement functions to print nth Fibonacci number using iteration and recursive methods. Compare the performance of two methods by counting the number of steps executed on various inputs. Also draw a comparative chart. (Fibonacci series 1, 1, 2, 3, 5, 8…..  
+Here 8 is the 6th Fibonacci number)
+Code:-
+#include <stdio.h>
+int count_loop = 0;
+int count_rec = 0;
+int fib_loop(int n) {
+    int first = 0;
+    int second = 1;
+    int next = 0;
+    if(n==0) {
+        return 0;
+        count_loop++;
+    }
+    if(n==1) {
+        return 1;
+        count_loop++;
+    }
+    for(int i = 2;i<=n;i++) {
+        next = first+second;
+        first = second;
+        second = next;
+        count_loop++;
+    }
+    return next;
+}
+int fib_rec(int n) {
+    count_rec++;
+    if(n==0) {
+        return 0;
+    }
+    else if(n==1) {
+        return 1;
+    }
+    else {
+        return fib_rec(n-1) + fib_rec(n-2);
+    }
+}
+int main() {
+    int n,loop_ans,rec_ans;
+    printf("Enter a Number: ");
+    scanf("%d" , &n);
+    loop_ans = fib_loop(n); 
+    rec_ans = fib_rec(n);
+    printf("Answer of Loop: %d\n", loop_ans);
+    printf("Answer of Rec: %d\n", rec_ans);
+    printf("Total Step Using Loop: %d\n", count_loop);
+    printf("Total Step Using Rec: %d\n", count_rec);
+}
+
+
+
+
+Practical-3:
+Write user defined functions for the following sorting methods and compare their performance by time measurement with random data and Sorted data. 
+1.Selection Sort
+#include <stdio.h>
+void selectionSort(int arr[], int n) {
+    for(int i = 0; i < n - 1; i++) {
+        int min = i;
+        for(int j = i + 1; j < n; j++) {
+            if(arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        int temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+    }
+}
+2.Bubble Sort
+void bubbleSort(int arr[], int n) {
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+3.Insertion Sort
+void insertionSort(int arr[], int n) {
+    for(int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while(j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+4.Merge Sort
+void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    int L[n1], R[n2];
+
+    for(int i = 0; i < n1; i++) L[i] = arr[l + i];
+    for(int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+
+    int i = 0, j = 0, k = l;
+
+    while(i < n1 && j < n2) {
+        if(L[i] <= R[j])
+            arr[k++] = L[i++];
+        else
+            arr[k++] = R[j++];
+    }
+
+    while(i < n1) arr[k++] = L[i++];
+    while(j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if(l < r) {
+        int m = (l + r) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+5.Quick Sort
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for(int j = low; j < high; j++) {
+        if(arr[j] < pivot) {
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+}
+
+void quickSort(int arr[], int low, int high) {
+    if(low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+6.Randomized Quick Sort
+#include <stdlib.h>
+
+int randomPartition(int arr[], int low, int high) {
+    int random = low + rand() % (high - low + 1);
+
+    int temp = arr[random];
+    arr[random] = arr[high];
+    arr[high] = temp;
+
+    return partition(arr, low, high);
+}
+
+void randomizedQuickSort(int arr[], int low, int high) {
+    if(low < high) {
+        int pi = randomPartition(arr, low, high);
+        randomizedQuickSort(arr, low, pi - 1);
+        randomizedQuickSort(arr, pi + 1, high);
+    }
+}
+MAIN FUNCTION:-
+#include <stdio.h>
+#include <stdlib.h>
+void selectionSort(int arr[], int n);
+void bubbleSort(int arr[], int n);
+void insertionSort(int arr[], int n);
+void mergeSort(int arr[], int l, int r);
+void quickSort(int arr[], int low, int high);
+void randomizedQuickSort(int arr[], int low, int high);
+void printArray(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int n;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter elements:\n");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    selectionSort(arr, n);   
+    // bubbleSort(arr, n);
+    // insertionSort(arr, n);
+    // mergeSort(arr, 0, n-1);
+    // quickSort(arr, 0, n-1);
+    // randomizedQuickSort(arr, 0, n-1);    
+    printf("Sorted array:\n");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+Practical-4:
+Sequential Search:
+Code:
+#include <stdio.h>
+int count_step = 0;
+int ss(int arr[],int n,int key) {
+    for(int i=0;i<n;i++) {
+        count_step++;
+        if(arr[i] == key) {
+            return i;
+        }
+    }
+    return -1;
+}
+int main() {
+    int n,key;
+    printf("Total Number of Element: ");
+    scanf("%d" , &n);
+    int arr[n];
+    printf("Enter Elements: \n");
+    for(int i = 0; i<n;i++) {
+        scanf("%d" , &arr[i]);
+    }
+    printf("Enter a Element to Search: ");
+    scanf("%d" , &key);
+    int result = ss(arr,n,key);
+    if(result == -1) {
+        printf("Doesn't Exist");
+    }
+    else {
+        printf("Value %d at Index %d" , key,result);
+    }
+    printf("\nNumber of Steps: %d" , count_step);
+    return 0;
+}
+
+
+Binary Search:
+Code:
+#include <stdio.h>
+int count_step = 0;
+int bs(int arr[], int n, int key) {
+    int low = 0, high = n - 1;
+    while(low <= high) {
+        count_step++;
+        int mid = (low + high) / 2;
+        if(arr[mid] == key) {
+            return mid;
+        }
+        else if(arr[mid] < key) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+int main() {
+    int n, key;
+    printf("Total Number of Element: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter Elements (Sorted): \n");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter a Element to Search: ");
+    scanf("%d", &key);
+    int result = bs(arr, n, key);
+    if(result == -1) {
+        printf("Doesn't Exist");
+    }
+    else {
+        printf("Value %d at Index %d", key, result);
+    }
+    printf("\nNumber of Steps: %d", count_step);
+    return 0;
+}
+
+Practical 5:
+Implement a program of Counting Sort & analyse it.
+Code:
+#include <stdio.h>
+void countingSort(int arr[],int n) {
+    int i, max = arr[0];
+    for(int i = 1; i<n;i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    int count[max+1];
+    int output[n];
+    for(i=0;i<=max;i++) {
+        count[i] = 0;
+    }
+    for(i=0;i<n;i++) {
+        count[arr[i]]++;    
+    }
+    for(i=1;i<=max;i++) {
+        count[i] = count[i] + count[i-1];
+    }
+    for(i = n-1;i>=0;i--) {
+        output[count[arr[i]]-1] = arr[i];
+        count[arr[i]]--;
+    }
+    for(i = 0;i<n;i++) {
+        arr[i] = output[i];
+    }
+    
+}
+int main() {
+    int n,i;
+    printf("Enter Array Size: ");
+    scanf("%d" , &n);
+    int arr[n];
+    printf("Enter elements:\n");
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    countingSort(arr,n);
+    printf("Sorted array:\n");
+    for(i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+
+
+
+
+Practical 6:
+Implement Program for fractional knapsack using Greedy design technique.
+Code:
+#include <stdio.h>
+struct Object {
+    int profit;
+    int weight;
+    float ratio;
+};
+int main() {
+    int n,capacity;
+    struct Object object[20],temp;
+    float totalProfit = 0.0;
+    printf("Total Number of Objects: ");
+    scanf("%d" , &n);
+    for(int i = 0;i<n;i++) {
+        printf("Enter a Profit and Weight: ");
+        scanf("%d %d",&object[i].profit,&object[i].weight);
+        object[i].ratio = (float)object[i].profit/object[i].weight;
+    }
+    printf("Enter Capacity: ");
+    scanf("%d" , &capacity);
+    for(int i = 0;i<n-1;i++) {
+        for(int j = i+1;j<n;j++) {
+            if(object[i].ratio < object[j].ratio) {
+                temp = object[i];
+                object[i] = object[j];
+                object[j] = temp;
+            }
+        }
+    }
+    for(int i = 0;i<n;i++) {
+        if(capacity >= object[i].weight) {
+            totalProfit = totalProfit + object[i].profit;
+            capacity = capacity - object[i].weight;
+            
+        }
+        else {
+            totalProfit = totalProfit + object[i].ratio*capacity;
+            break;
+        }
+    }
+    printf("Total Profit : %f" , totalProfit);
+}
+
+
+
+
+
+
+
+
+
+
+
+
